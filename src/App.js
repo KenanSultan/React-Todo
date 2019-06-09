@@ -11,9 +11,10 @@ class App extends Component {
     this.changeStatus = this.changeStatus.bind(this)
 
     this.state = {
-      active: ['1','2','3'],
-      done: [],
+      active: ['Read first chapter','Do some exercises','Solve next problem'],
+      done: ['Anything','Something'],
       content: <tr>
+                <th scope="row"></th>
                 <td key='1'></td>
                 <td key='2'></td>
                 <td key='3'></td>
@@ -37,9 +38,10 @@ class App extends Component {
     this.setState({
       content: this.state.active.map((val,i) => {
         return (<tr key={i}>
+          <th scope="row">{i+1}</th>
           <td key='1'>{val}</td>
           <td key='2'>Active</td>
-          <td key='3'><button data-name={val} className='btn btn-info' onClick={this.changeStatus}>+</button></td>
+          <td key='3'><button data-name={val} className='btn btn-info' onClick={this.changeStatus}>-</button></td>
           <td key='4'><button data-name={val} data-status='active' className='btn btn-danger' onClick={this.removeItem}>x</button></td>
         </tr>)
       })
@@ -50,6 +52,7 @@ class App extends Component {
     this.setState({
       content: this.state.done.map((val,i) => {
         return (<tr key={i}>
+          <th scope="row">{i+1}</th>
           <td key='1'>{val}</td>
           <td key='2'>Done</td>
           <td key='3'>+</td>
@@ -62,6 +65,7 @@ class App extends Component {
   showAll(){
     let content1 = this.state.active.map((val,i) => {
         return (<tr key={i}>
+          <th scope="row">{i+1}</th>
           <td key='1'>{val}</td>
           <td key='2'>Active</td>
           <td key='3'><button data-name={val} className='btn btn-info' onClick={this.changeStatus}>+</button></td>
@@ -70,6 +74,7 @@ class App extends Component {
     })
     let content2 = this.state.done.map((val,i) => {
       return (<tr key={content1.length+i}>
+        <th scope="row">{content1.length+i+1}</th>
         <td key='1'>{val}</td>
         <td key='2'>Done</td>
         <td key='3'>+</td>
@@ -134,7 +139,7 @@ class App extends Component {
     this.setState({
       done: newDone
     })
-    this.showActive()
+    this.showDone()
   }
 
   render() {
@@ -158,6 +163,7 @@ class App extends Component {
             <table className="table">
               <thead>
                 <tr>
+                  <th scope="col">#</th>
                   <th scope="col">Title</th>
                   <th scope="col">Status</th>
                   <th scope="col">Done</th>
