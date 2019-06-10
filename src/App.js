@@ -28,7 +28,7 @@ class App extends Component {
     let newActive = this.state.active
     newActive.push(item.value)
     this.setState({
-      active: newActive,
+      active: newActive
     })
     item.value = ''
     this.showActive()
@@ -101,11 +101,11 @@ class App extends Component {
           newActive.push(exActive[i])
         }
       }
+      console.log(newActive)
       this.setState({
-        active: newActive,
+        active: newActive
       })
-
-      this.showActive()
+      console.log(this.state.active)
     }
     else{
       let exDone = this.state.done
@@ -118,8 +118,8 @@ class App extends Component {
       this.setState({
         done: newDone
       })
-      this.showDone()
     }
+    this.showAll()
   }
 
   changeStatus(e){
@@ -136,9 +136,11 @@ class App extends Component {
     })
     let newDone = this.state.done
     newDone.push(itemName)
+    console.log(newDone)
     this.setState({
       done: newDone
     })
+    console.log(this.state.done)
     this.showDone()
   }
 
